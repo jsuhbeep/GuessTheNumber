@@ -17,6 +17,12 @@ public class Main {
             int tries = 0;
             while(guessing){
                 int guess = (int) input.nextInt();
+                try {
+                    int arr[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
+                    int opt = arr[guess-1];
+                } catch (Exception e) {
+                    System.out.println("Remember to input a number between 1 and 20 next time.");
+                }
                 if(guess > random){
                     tries++;
                     System.out.println("Your guess is too high. \nTake a guess.");
@@ -30,10 +36,14 @@ public class Main {
             }
             System.out.println("Would you like to play again? (y or n)");
             char reply = input.next().charAt(0);
-            if (reply == 'n'){
-                playing = false;
-            } else if (reply == 'y'){
-                System.out.println("Well, " + name + ", I am thinking of a new number between 1 and 20. \n Take a guess.");
+            try {
+                if (reply == 'n') {
+                    playing = false;
+                } else if (reply == 'y') {
+                    System.out.println("Well, " + name + ", I am thinking of a new number between 1 and 20. \n Take a guess.");
+                }
+            } catch (Exception e) {
+                System.out.println("Error: the response was not an option. Ending the game.");
             }
         }
         System.out.println("Thank you for playing Guess the Number!");
